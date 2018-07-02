@@ -1,3 +1,11 @@
+/*
+   Tu Tran
+   Programming II
+   Due: June 20, 18
+   Sean Cornery Movie
+   Read data from file -> Sort movie name and star name alphabetically
+ */
+
 //Read in 1 line into a string
 //Print the string
 //while there are characters left to process in the string
