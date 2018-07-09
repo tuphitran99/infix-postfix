@@ -1,0 +1,72 @@
+program infix (input,output);
+{ Convert a infix expression into postfix.
+  At the moment, it only accepts single digit numbers.
+  Alphabet:  0..9 + - * / ^ \
+  Re: evaluate.pas
+}
+var
+  top : integer;
+  token, x : char;
+  stack : array [1..20] of char;
+
+procedure push(ch : char);
+  begin
+    top := top + 1;
+    stack[top] := ch
+  end;
+
+procedure pop(var ch : char);
+  begin
+    ch := stack[top];
+    top := top - 1
+  end;
+
+function priority(ch : char) : integer;
+  begin
+    case ch of
+      '^'     : priority := 3;
+      '*','/' : priority := 2;
+      '+','-' : priority := 1;
+      '('     : priority := 0;
+    end;
+  end;
+
+begin
+  top := 0;
+  read(token);
+  while token <> '\' do
+    begin
+      case token of
+        '0'..'9' :
+          begin
+            write(token);
+          end;
+        '(' : push(token);
+        ')' :
+          begin
+            while stack[top] <> '(' do
+              begin
+                pop(x);
+                write(x);
+              end;
+            pop(x)
+          end;
+        '+','-','*','/','^' :
+          begin
+            if top = 0 then push(token)
+            else
+              begin
+                while (top > 0) and (priority(token) <= priority(stack[top])) do
+                  begin
+                    pop(x);
+                    write(x);
+                  end;
+                push(token)
+              end
+          end
+      end;
+      read(token);
+    end;
+  while top > 0 do begin pop(x); write(x) end;
+  writeln('\');
+end.
