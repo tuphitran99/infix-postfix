@@ -5,14 +5,6 @@
    Infix-Posfix
    Read math formula from file -> Print out infix-postfix
  */
-
-/*if ( st[i]== *("^") ) st[i] = '3';
-   else if ( st[i]== *("*") ) st[i] = '2';
-   else if ( st[i]== *("/") ) st[i] = '2';
-   else if ( st[i]== *("+") ) st[i] = '1';
-   else if ( st[i]== *("-") ) st[i] = '1';
-   else if ( st[i]== *(")") ) st[i] = '0';
-   else if ( st[i]== *(" ") ) continue;*/
  #include <iostream>
  #include <fstream>
  #include <string>
@@ -41,13 +33,13 @@ void processData(){
 	file.open("data.txt");
 	string st;
 
-
 	char temp;
 	stack <char> stk(100);
+
 	while (getline(file, st)) {
 		cout << st <<endl;
 		for (int i = 0; i < st.length(); i++) {
-			if ( st[i] == *(" ") ) continue;       //skip blank
+			if ( st[i] == *(" ") ) continue;                   //skip blank
 			else{
 				if(isdigit(st[i])) {cout << st[i];}
 				else {
@@ -79,7 +71,6 @@ void processData(){
 		while(!stk.isEmpty()) {
 			stk.pop(temp);
 			cout << temp;
-			//cout << "LINE: " << __LINE__<<endl;
 		}
 		cout << endl;
 	}
