@@ -1,6 +1,9 @@
+// ------- STACK CREATED BY -----------//
+// ----- PROF. McDaniel ------------//
 #include <iostream>
 using namespace std;
 template<typename T>
+
 class stack {
 T *st;
 int top;
