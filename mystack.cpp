@@ -8,35 +8,35 @@ int size;
 public:
 stack(int i)
 {
-        st = new T[i];
-        top = -1;
-        size = i;
+	st = new T[i];
+	top = -1;
+	size = i;
 }
 ~stack()
 {
-        delete [] st;
+	delete [] st;
 }
 void push(T i)
 {
-        st[++top] = i;
+	st[++top] = i;
 }
 void pop(T &i)
 {
-        i = st[top--];
+	i = st[top--];
 }
 int sizeof_()
 {
-        return size;
+	return size;
 }
 int items()      // number of items on the stack
 {
-        return top;
+	return top;
 }
 int isEmpty(){
-        if (top <0) return 1;
-        else return 0;
+	if (top <0) return 1;
+	else return 0;
 }
 T topVal(){
-        return st[top];
+	return st[top];
 }
 };
