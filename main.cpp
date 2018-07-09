@@ -47,10 +47,8 @@ void processData(){
 	while (getline(file, st)) {
 		cout << st <<endl;
 		for (int i = 0; i < st.length(); i++) {
-			if ( st[i] == *(" ") ) continue;                                                             //skip blank
-
+			if ( st[i] == *(" ") ) continue;       //skip blank
 			else{
-
 				if(isdigit(st[i])) {cout << st[i];}
 				else {
 					if ( st[i]== *("(") ) {stk.push(st[i]);}
@@ -60,8 +58,6 @@ void processData(){
 							while ( stk.topVal() != '(' && !stk.isEmpty() ) {
 								stk.pop(temp);
 								cout << temp;
-								/*cout << "LINE: " << __LINE__<<endl;
-								   cout << "TOP: " << stk.items() << endl;*/
 							}
 							stk.pop(temp);
 						}
@@ -72,7 +68,6 @@ void processData(){
 								while (!stk.isEmpty() && priority(st[i], stk.topVal()) >=0) {
 									stk.pop(temp);
 									cout << temp;
-									//cout << "LINE: " << __LINE__<<endl;
 								}
 								stk.push(st[i]);
 							}
@@ -81,7 +76,6 @@ void processData(){
 				}
 			}
 		}
-
 		while(!stk.isEmpty()) {
 			stk.pop(temp);
 			cout << temp;
@@ -89,13 +83,8 @@ void processData(){
 		}
 		cout << endl;
 	}
-
-
 	file.close();
 }
-
-
-
 
 int main(){
 	processData();
