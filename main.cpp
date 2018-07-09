@@ -20,7 +20,7 @@ int precedence(char s){
 	else if ( s == '(' ) return 0;
 	else return 0;
 };
-int priority(char st, char top){
+int priority(char st, char top){// --- evaluate priority
 	int a, b;
 	a = precedence(st);
 	b = precedence(top);
@@ -30,7 +30,7 @@ int priority(char st, char top){
 
 void processData(){
 	ifstream file;
-	file.open("data.txt");
+	file.open("data.txt");  // --- data file
 	string st;
 
 	char temp;
@@ -38,8 +38,9 @@ void processData(){
 
 	while (getline(file, st)) {
 		cout << st <<endl;
+		//----------------------CONVERT TO POSTFIX -------------------
 		for (int i = 0; i < st.length(); i++) {
-			if ( st[i] == *(" ") ) continue;                   //skip blank
+			if ( st[i] == *(" ") ) continue;       //skip blank
 			else{
 				if(isdigit(st[i])) {cout << st[i];}
 				else {
@@ -54,7 +55,6 @@ void processData(){
 							stk.pop(temp);
 						}
 						else {
-
 							if (stk.isEmpty()) {stk.push(st[i]);}
 							else {
 								while (!stk.isEmpty() && priority(st[i], stk.topVal()) >=0) {
